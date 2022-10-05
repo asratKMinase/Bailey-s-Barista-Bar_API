@@ -3,6 +3,7 @@ package com.revature.bailey.users;
 
 import com.revature.bailey.exceptions.InvalidRequestException;
 import com.revature.bailey.exceptions.ResourcePersistanceException;
+import com.revature.bailey.util.Serviceable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class UsersServices {
+public class UsersServices  {
     private UsersDao usersDao;
 
     @Autowired
@@ -68,9 +69,9 @@ public class UsersServices {
 
     public Users authenticateUsers(String username, String password) throws AuthenticationException {
         if(password == null || password.trim().equals("") || username == null || username.trim().equals("")) {
-            throw new InvalidRequestException("Either email or password is an invalid entry. Please try logging in again");
+            throw new InvalidRequestException("Either username or password is an invalid entry. Please try logging in again");
         }
-        Users authenticatedUsers = usersDao.authenticateCustomer(username, password);
+        Users authenticatedUsers = usersDao.authenticateUsers(username, password);
 
         if (authenticatedUsers == null){
             throw new AuthenticationException("Unauthenticated user, information provided was not consistent with our database.");

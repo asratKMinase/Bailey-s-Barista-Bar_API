@@ -16,6 +16,7 @@ import javax.persistence.*;
 public class Courses {
     @Id
     private String courseid;
+    @Column(unique = true)
     private String coname;
     @ManyToOne
     @JoinColumn(name = "classid", referencedColumnName = "classid")

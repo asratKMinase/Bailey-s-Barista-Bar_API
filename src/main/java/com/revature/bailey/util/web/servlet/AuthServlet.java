@@ -2,6 +2,7 @@ package com.revature.bailey.util.web.servlet;
 
 import com.revature.bailey.users.Users;
 import com.revature.bailey.users.UsersServices;
+import com.revature.bailey.util.Authable;
 import com.revature.bailey.util.web.dto.LoginCreds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,8 +13,9 @@ import javax.servlet.http.HttpSession;
 
 
 @RestController
+@CrossOrigin
 @RequestMapping("/auth")
-public class AuthServlet {
+public class AuthServlet implements Authable {
 
     private final UsersServices usersServices;
 
