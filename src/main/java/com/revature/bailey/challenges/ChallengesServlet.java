@@ -42,7 +42,7 @@ public class ChallengesServlet {
         Users authChallenges = (Users) req.getAttribute("authUClasses");
         newChallenges.setChaid(newChallengesi.getChaid());
         newChallenges.setChname(newChallengesi.getChname());
-        newChallenges.setClassid(classesServices.readById(newChallengesi.getClassid()));
+        newChallenges.setId(classesServices.readById(newChallengesi.getId()));
 
         Challenges challenges = challengesServices.create(newChallenges);
         return new ResponseEntity<>(challenges, HttpStatus.CREATED);
@@ -54,7 +54,7 @@ public class ChallengesServlet {
         Users authChallenges = (Users) req.getAttribute("authUClasses");
         newChallenges.setChaid(newChallengesi.getChaid());
         newChallenges.setChname(newChallengesi.getChname());
-        newChallenges.setClassid(classesServices.readById(newChallengesi.getClassid()));
+        newChallenges.setId(classesServices.readById(newChallengesi.getId()));
 
         Challenges challenges = challengesServices.create(newChallenges);
         return new ResponseEntity<>(challenges, HttpStatus.CREATED);
@@ -62,7 +62,8 @@ public class ChallengesServlet {
 
     }
     @DeleteMapping("/delete")
-    public void deleteChallenges(String chaid){
-        boolean newChallenges = challengesServices.delete(chaid);
+    public void deleteChallenge(@RequestParam String chaid) {
+        boolean newChallenge= challengesServices.delete(chaid);
     }
+
 }

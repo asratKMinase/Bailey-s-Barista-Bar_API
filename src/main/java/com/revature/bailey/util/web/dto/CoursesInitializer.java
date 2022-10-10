@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 public class CoursesInitializer {
     private String courseid;
     private String coname;
-    private String classid;
+    private long id;
 }

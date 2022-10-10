@@ -64,7 +64,8 @@ public class SkillsServlet {
 
     }
     @DeleteMapping("/delete")
-    public void deleteSkills(String skillid){
+    public void deleteSkills(@RequestParam String skillid) {
         boolean newSkills = skillsServices.delete(skillid);
     }
+
 }

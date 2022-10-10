@@ -34,13 +34,13 @@ public class UsersServlet {
 
     @GetMapping("/findUsers")
     //@SecureEndpoint(allowedUsers = {"bailey@mail.com", "aminase@mail.com"}, isLoggedIn = true)
-    public ResponseEntity<Users> findUsers(@RequestParam String id){
+    public ResponseEntity<Users> findUsers(@RequestParam long id){
         Users users = usersServices.readById(id);
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
     @PostMapping("/register")
     public ResponseEntity<Users> saveUsers(@RequestBody Users users) {
-        Users newUsers = usersServices.create(users);
+        Users newUsers = (Users)usersServices.create(users);
         return new ResponseEntity<>(newUsers, HttpStatus.CREATED);
     }
     @PutMapping("/update")
@@ -49,8 +49,9 @@ public class UsersServlet {
         return new ResponseEntity<>(newUsers, HttpStatus.OK);
     }
     @DeleteMapping("/delete")
-    public void deleteUsers(@RequestParam String username) {
+    public void deleteUsers(@RequestParam long username) {
         boolean newUsers = usersServices.delete(username);
     }
+
 }
 

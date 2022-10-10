@@ -21,7 +21,7 @@ public class ClassesServices {
         List<Classes> classes = (List<Classes>) classesDao.findAll();
         return classes;
     }
-    public Classes readById(String id) {
+    public Classes readById(long id) {
         Classes classes= classesDao.findById(id).get();
         return classes;
     }
@@ -29,12 +29,12 @@ public class ClassesServices {
         classesDao.save(updatedClasses);
         return updatedClasses;
     }
-    public boolean delete(String classes) {
+    public boolean delete(long classes) {
         classesDao.deleteById(classes);
         return true;
     }
 
-    public boolean validateClassesNotUsed(String classes){
+    public boolean validateClassesNotUsed(long classes){
         return classesDao.existsById(classes);
     }
 
@@ -42,7 +42,7 @@ public class ClassesServices {
         if(!validateInput(newClasses)){
             throw new InvalidRequestException("User input was not validated, either empty String or null values");
         }
-        if(validateClassesNotUsed(newClasses.getClassid())){
+        if(validateClassesNotUsed(newClasses.getId())){
             throw new InvalidRequestException("Classes is already in the list. Please try again");
         }
         Classes persistedClasses = classesDao.save(newClasses);
@@ -55,11 +55,10 @@ public class ClassesServices {
 
     public boolean validateInput(Classes newClasses) {
         if(newClasses == null) return false;
-        if(newClasses.getClassid()== null || newClasses.getClassid().trim().equals("")) return false;
         if(newClasses.getCname() == null || newClasses.getCname().trim().equals("")) return false;
         if(newClasses.getSdate() == null || newClasses.getSdate().trim().equals("")) return false;
         if(newClasses.getEdate()== null || newClasses.getEdate().equals("")) return false;
-        return newClasses.getUsername() != null || !newClasses.getUsername().equals("");
+        return newClasses.getEnroll() != null || !newClasses.getEnroll().equals("");
 
     }
 }

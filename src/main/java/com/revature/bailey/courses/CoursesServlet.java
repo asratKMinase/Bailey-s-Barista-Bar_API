@@ -43,7 +43,7 @@ public class CoursesServlet {
         Users authClasses = (Users) req.getAttribute("authUClasses");
         newCourses.setCourseid(newCoursesi.getCourseid());
         newCourses.setConame(newCoursesi.getConame());
-        newCourses.setClassid(classesServices.readById(newCoursesi.getClassid()));
+        newCourses.setId(classesServices.readById(newCoursesi.getId()));
 
         Courses courses = coursesServices.create(newCourses);
         return new ResponseEntity<>(courses, HttpStatus.CREATED);
@@ -56,14 +56,15 @@ public class CoursesServlet {
         Users authClasses = (Users) req.getAttribute("authUClasses");
         newCourses.setCourseid(newCoursesi.getCourseid());
         newCourses.setConame(newCoursesi.getConame());
-        newCourses.setClassid(classesServices.readById(newCoursesi.getClassid()));
+        newCourses.setId(classesServices.readById(newCoursesi.getId()));
 
         Courses courses = coursesServices.create(newCourses);
         return new ResponseEntity<>(courses, HttpStatus.CREATED);
 
     }
     @DeleteMapping("/delete")
-    public void deleteCourses(String courseid){
-        boolean newCourses = coursesServices.delete(courseid);
+    public void deleteCourse(@RequestParam String courseid) {
+        boolean newCourse = coursesServices.delete(courseid);
     }
+
 }

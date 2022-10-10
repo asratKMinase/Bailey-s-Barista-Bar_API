@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 public class ChallengesInitializer {
     private String chaid;
     private String chname;
-    private String classid;
+    private long id;
 }

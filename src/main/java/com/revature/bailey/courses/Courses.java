@@ -19,6 +19,6 @@ public class Courses {
     @Column(unique = true)
     private String coname;
     @ManyToOne
-    @JoinColumn(name = "classid", referencedColumnName = "classid")
-    private Classes classid;
+    @JoinColumn(name = "id", referencedColumnName = "id")
+    private Classes id;
 }

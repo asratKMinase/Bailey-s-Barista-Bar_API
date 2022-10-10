@@ -55,9 +55,9 @@ public class CoursesServices {
 
     public boolean validateInput(Courses newCourses) {
         if(newCourses == null) return false;
-        if(newCourses.getClassid()== null || newCourses.getCourseid().trim().equals("")) return false;
+        if(newCourses.getId()== null || newCourses.getCourseid().trim().equals("")) return false;
         if(newCourses.getConame() == null || newCourses.getConame().trim().equals("")) return false;
-        return newCourses.getClassid() != null || !newCourses.getClassid().equals("");
+        return newCourses.getId() != null || !newCourses.getId().equals("");
 
     }
 }

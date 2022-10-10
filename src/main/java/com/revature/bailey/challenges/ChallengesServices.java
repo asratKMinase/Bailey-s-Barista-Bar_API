@@ -57,7 +57,7 @@ public class ChallengesServices {
         if(newChallenges == null) return false;
         if(newChallenges.getChaid()== null || newChallenges.getChaid().trim().equals("")) return false;
         if(newChallenges.getChname() == null || newChallenges.getChname().trim().equals("")) return false;
-        return newChallenges.getClassid() != null || !newChallenges.getClassid().equals("");
+        return newChallenges.getId()!= null || !newChallenges.getId().equals("");
 
     }
 }

@@ -19,6 +19,6 @@ public class Challenges {
     private String chaid;
     private String chname;
     @ManyToOne
-    @JoinColumn(name = "classid", referencedColumnName = "classid")
-    private Classes classid;
+    @JoinColumn(name = "id", referencedColumnName = "id")
+    private Classes id;
 }
