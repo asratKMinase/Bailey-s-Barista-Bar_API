@@ -70,7 +70,6 @@ public class ClassesServlet {
         newClasses.setCname(newClassesi.getCname());
         newClasses.setSdate(newClassesi.getSdate());
         newClasses.setEdate(newClassesi.getEdate());
-        newClasses.setEnroll(newClassesi.getEnroll());
 
         //newClasses.setUsername( userServices.readById(newClassesi.getUsername()));
 

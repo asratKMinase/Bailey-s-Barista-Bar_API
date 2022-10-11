@@ -2,6 +2,7 @@ package com.revature.bailey.users;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.revature.bailey.classes.Classes;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -33,6 +34,7 @@ public class Users {
     public Users() {
     }
 
+    @Autowired
     public Users(String username, String fname, String lname, String password, String rdate, boolean isTeacher, boolean isAdmin, String email) {
         this.username = username;
         this.fname = fname;

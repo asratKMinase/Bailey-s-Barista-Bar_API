@@ -1,6 +1,7 @@
 package com.revature.bailey.users;
 
 
+import com.revature.bailey.classes.Classes;
 import com.revature.bailey.exceptions.InvalidRequestException;
 import com.revature.bailey.exceptions.ResourcePersistanceException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,14 +42,17 @@ public class UsersServices  {
         return usersDao.existsById(username);
     }
 
-    public Users create(Users newCustomer){
-        if(!validateInput(newCustomer)){
+    public Users create(Users newUsers){
+        if(!validateInput(newUsers)){
             throw new InvalidRequestException("User input was not validated, either empty String or null values");
         }
-        if(validateUsernameNotUsed(newCustomer.getId())){
+        if(validateUsernameNotUsed(newUsers.getId())){
             throw new InvalidRequestException("Username is already in use. Please try again with another email or login into previous made account.");
         }
-        Users persistedUsers= usersDao.save(newCustomer);
+
+        Users persistedUsers= usersDao.save(newUsers);
+        Classes classes = new Classes();
+        classes.getUsers().add(persistedUsers);
 
         if(persistedUsers == null){
             throw new ResourcePersistanceException("Customer was not persisted to the database upon registration");

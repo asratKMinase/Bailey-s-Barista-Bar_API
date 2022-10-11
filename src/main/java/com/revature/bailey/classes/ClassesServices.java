@@ -2,6 +2,7 @@ package com.revature.bailey.classes;
 
 import com.revature.bailey.exceptions.InvalidRequestException;
 import com.revature.bailey.exceptions.ResourcePersistanceException;
+import com.revature.bailey.users.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
@@ -46,6 +47,8 @@ public class ClassesServices {
             throw new InvalidRequestException("Classes is already in the list. Please try again");
         }
         Classes persistedClasses = classesDao.save(newClasses);
+        Users users = new Users();
+        users.getClasses().add(persistedClasses);
 
         if(persistedClasses == null){
             throw new ResourcePersistanceException("Classes was not persisted to the database upon registration");
@@ -57,8 +60,7 @@ public class ClassesServices {
         if(newClasses == null) return false;
         if(newClasses.getCname() == null || newClasses.getCname().trim().equals("")) return false;
         if(newClasses.getSdate() == null || newClasses.getSdate().trim().equals("")) return false;
-        if(newClasses.getEdate()== null || newClasses.getEdate().equals("")) return false;
-        return newClasses.getEnroll() != null || !newClasses.getEnroll().equals("");
+        return newClasses.getEdate() != null || !newClasses.getEdate().equals("");
 
     }
 }
