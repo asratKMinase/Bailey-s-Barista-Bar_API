@@ -15,6 +15,7 @@ import javax.persistence.*;
 public class Enroll {
     @Id
     private String enrollid;
+    @Column(unique = true)
     private String cname;
     private String enroll;
     @ManyToOne

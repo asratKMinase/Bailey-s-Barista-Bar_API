@@ -39,12 +39,6 @@ public class CoursesServices {
     }
 
     public Courses create(Courses newCourses){
-        if(!validateInput(newCourses)){
-            throw new InvalidRequestException("User input was not validated, either empty String or null values");
-        }
-        if(validateCoursesNotUsed(newCourses.getCourseid())){
-            throw new InvalidRequestException("Courses is already in the list. Please try again");
-        }
         Courses persistedCourses = coursesDao.save(newCourses);
 
         if(persistedCourses == null){
@@ -53,11 +47,4 @@ public class CoursesServices {
         return persistedCourses;
     }
 
-    public boolean validateInput(Courses newCourses) {
-        if(newCourses == null) return false;
-        if(newCourses.getId()== null || newCourses.getCourseid().trim().equals("")) return false;
-        if(newCourses.getConame() == null || newCourses.getConame().trim().equals("")) return false;
-        return newCourses.getId() != null || !newCourses.getId().equals("");
-
-    }
 }
